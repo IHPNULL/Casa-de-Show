@@ -1,0 +1,39 @@
+body {
+    background: #DF3B3B;
+}
+
+.alert{
+	position: fixed;
+	left: 25%;
+	right: 25%;
+	font-size: 150%;
+}
+
+.container-fluid{
+	margin-left: 10%;
+	color: red;
+}
+.form-horizontal {
+	 display: -webkit-flex;
+	 display: flex;
+	 -webkit-align-items: center;
+	 align-items: center;
+	 -webkit-justify-content: center;
+	 justify-content: center;	
+}
+
+.panel-heading{
+	background-color:gray;
+	color:black;
+}
+.cadastro{	
+	width:40%;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+.login{
+	width:20%;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin-bottom: 8%;
+}

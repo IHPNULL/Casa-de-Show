@@ -16,42 +16,47 @@
 		<div class="container-fluid">
 			<h2>Rehena</h2>
 		</div>
-			
 	</nav>
 	
 	<form action="/home" method="POST">
 	<div class = "form-horizontal">
-	
-			<div class="login">		
-				<div class="panel-heading">
-					<h3 class="panel-title">LOGIN</h3>
-				</div>
+
+			<div class="cadastro">
+					<div class="panel-heading">
+						<h3 class="panel-title">CADASTRO DE USUARIO</h3>
+					</div>
 				<div class="panel-body">
+					<div class="form-group">
+						<label for="nome" class="col-sm-4 control-label">NOME</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="nome" />
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="email" class="col-sm-4 control-label">E-MAIL</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" name="email" />
-							</div>
-						</div>					
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="senha" class="col-sm-4 control-label">SENHA</label>
 						<div class="col-sm-8">
 							<input type="password" class="form-control" name="senha"/>
 						</div>
 					</div>
+					<div class="form-group">
+					<label for="senha" class="col-sm-4 control-label">CONFIRME A SENHA</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" name="confsenha"/>
+						</div>
+					</div>
 					<div class = "form-group">
-					<div class="col-sm-offset-3 col-sn-10">
-						<button type="button" class="btn btn-primary">LOGIN</button>
-					</div>
-					<div class="col-sm-offset-3 col-sn-10">
-						<button type="button" class="btn btncadastrar btn-primary" onclick="window.location.href='/home/cadastro'">Cadastrar-se</button>
-					</div>
+						<div class="col-sm-offset-3 col-sn-10">
+							<button type = "submit" class="btn btn-primary">SALVAR</button>
+						</div>
 					</div>
 				</div>
-				
 			</div>
-
-			
 		</div>
 		</form>
 		</body>

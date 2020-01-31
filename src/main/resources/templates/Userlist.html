@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns = "http:www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
-
+	  xmlns:th="https://www.thymeleaf.org/"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Usuarios</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 </head>
@@ -14,8 +14,9 @@
 
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container-fluid">
-			<img alt="logo" src="/img/LogoOmega.png" height = "80" width="120" style="margin-left:7%;">
+			<h2>Rehena</h2>
 		</div>
+			
 	</nav>
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -32,9 +33,18 @@
 						</tr>
 					</thead>
 					<tbody>
+					
+						<tr th:each=" User : ${Cadastro}">
+							<td class="text-center" th:text="${User.id}"></td>
+							<td th:text="${User.Nome}"></td>
+							<td th:text="${User.Email}"></td>
+							<td class="text-center" th:text="${User.Data }"></td>
+						</tr>
+										
 						<tr>
 							<td colspan="4">Nenhum usuario encontrado</td>
-						</tr>			
+						</tr>
+						 			
 					</tbody>
 				</table>
 			</div>	

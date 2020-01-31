@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns = "http:www.w3.org/1999/xhtml"
-	  xmlns:th="https://www.thymeleaf.org/"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:th="https://www.thymeleaf.org/">
+
 <head>
 <meta charset="utf-8">
-<title>Usuarios</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 </head>
@@ -14,37 +14,26 @@
 
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container-fluid">
-			<h2>Rehena</h2>
+			<img alt="logo" src="/img/LogoOmega.png" height = "80" width="120" style="margin-left:7%;">
 		</div>
-			
 	</nav>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h1 class="panel-title">Pesquisa de usuario</h1>
+				<h1 class="panel-title">Proximos Eventos</h1>
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th class="text-center col-md-1">id</th>
-							<th>Nome</th>
-							<th>E-MAIL</th>
-							<th class="text-center col-md-1">Data de cadastro</th>
+							<th>Nome do Evento</th>
+							<th>Banda</th>
+							<th class="text-center col-md-1">Data do evento</th>
 						</tr>
 					</thead>
 					<tbody>
-					
-						<tr th:each=" User : ${Cadastro}">
-							<td class="text-center" th:text="${User.id}"></td>
-							<td th:text="${User.Nome}"></td>
-							<td th:text="${User.Email}"></td>
-							<td class="text-center" th:text="${User.Data }"></td>
-						</tr>
-										
 						<tr>
-							<td colspan="4">Nenhum usuario encontrado</td>
-						</tr>
-						 			
+							<td colspan="4">Nenhum Evento encontrado</td>
+						</tr>			
 					</tbody>
 				</table>
 			</div>	

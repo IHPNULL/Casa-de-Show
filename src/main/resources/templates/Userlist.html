@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html xmlns = "http:www.w3.org/1999/xhtml"
-	  xmlns:th="https://www.thymeleaf.org/"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="LayoutPadrao">
 <head>
 <meta charset="utf-8">
 <title>Usuarios</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 </head>
 
-
-<body>
-
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<h2>Rehena</h2>
-		</div>
+<section layout:fragment="conteudo">	
 			
-	</nav>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h1 class="panel-title">Pesquisa de usuario</h1>
@@ -38,7 +30,7 @@
 							<td class="text-center" th:text="${User.id}"></td>
 							<td th:text="${User.Nome}"></td>
 							<td th:text="${User.Email}"></td>
-							<td class="text-center" th:text="${User.Data }"></td>
+							<td class="text-center" th:text="${{User.date}}"></td>
 						</tr>
 										
 						<tr>
@@ -50,7 +42,5 @@
 			</div>	
 		
 		</div>
-		</body>
-	<script type="/js/jquery-3.4.1.min.js"></script>
-<script type="/js/bootstrap.min.js"></script>
+</section>
 </html>

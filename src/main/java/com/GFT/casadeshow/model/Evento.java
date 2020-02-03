@@ -12,15 +12,18 @@ import javax.persistence.Id;
 @Entity
 public class Evento {
 	
-	Date Data = new Date();
+	private Date Data = new Date();
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String Nome;
+	private String org;
 	private String musicobanda;
+
 	
+
 	@Enumerated(EnumType.STRING)
 	private Locais Local;	
 	
@@ -36,7 +39,6 @@ public class Evento {
 	public void setNome(String nome) {
 		this.Nome = nome;
 	}
-	
 	public Date getData() {
 		return Data;
 	}
@@ -55,8 +57,12 @@ public class Evento {
 	public void setLocal(Locais local) {
 		Local = local;
 	}
-	
-	
+	public String getOrg() {
+		return org;
+	}
+	public void setOrg(String org) {
+		this.org = org;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html xmlns = "http:www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="LayoutPadrao">
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Home</title>
 </head>
 
-
-<body>
-
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<h2>Rehena</h2>
-		</div>
-			
-	</nav>
-	
-	<form action="/home" method="POST">
-	<div class = "form-horizontal">
-	
-			<div class="login">		
-				<div class="panel-heading">
-					<h3 class="panel-title">LOGIN</h3>
-				</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<label for="email" class="col-sm-4 control-label">E-MAIL</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="email" />
+<section layout:fragment="conteudo">		
+		<form action="/home" method="POST">
+		<div class = "form-horizontal">
+		
+				<div class="login">		
+					<div class="panel-heading">
+						<h3 class="panel-title">LOGIN</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="email" class="col-sm-4 control-label">E-MAIL</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="email" />
+								</div>
+							</div>					
+						<div class="form-group">
+							<label for="senha" class="col-sm-4 control-label">SENHA</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" name="senha"/>
 							</div>
-						</div>					
-					<div class="form-group">
-						<label for="senha" class="col-sm-4 control-label">SENHA</label>
-						<div class="col-sm-8">
-							<input type="password" class="form-control" name="senha"/>
+						</div>
+						<div class = "form-group">
+						<div class="col-sm-offset-3 col-sn-10">
+							<button type="button" class="btn btncadastrar btn-primary">LOGIN</button>
+						</div>
+						<div class="col-sm-offset-3 col-sn-10">
+							<button type="button" class="btn btncadastrar btn-primary" onclick="window.location.href='/cadastro'">Cadastrar-se</button>
+						</div>
 						</div>
 					</div>
-					<div class = "form-group">
-					<div class="col-sm-offset-3 col-sn-10">
-						<button type="button" class="btn btn-primary">LOGIN</button>
-					</div>
-					<div class="col-sm-offset-3 col-sn-10">
-						<button type="button" class="btn btncadastrar btn-primary" onclick="window.location.href='/home/cadastro'">Cadastrar-se</button>
-					</div>
-					</div>
+					
 				</div>
+	
 				
 			</div>
-
-			
-		</div>
-		</form>
-		</body>
-	<script type="/js/jquery-3.4.1.min.js"></script>
-<script type="/js/bootstrap.min.js"></script>
+			</form>
+</section>
 </html>

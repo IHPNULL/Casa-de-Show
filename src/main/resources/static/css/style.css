@@ -11,13 +11,16 @@ body {
 
 .container-fluid {
 	color: red;
+	margin-left:25%;
+
 }
 
-.btn {
-	margin:5%;
+.btn-list{
+	margin-left:75%;
+	margin-top:-3%;
 }
 
-.btncadastrar {
+.btncadastrar{
 	margin:5%;
 }
 

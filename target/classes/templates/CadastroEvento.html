@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html xmlns = "http:www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="LayoutPadrao">
 <head>
 <meta charset="utf-8">
-<title>CADASTRO DE EVENTO</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Novo Evento</title>
 </head>
 
-
-<body>
-
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<h2>Rehena</h2>
-		</div>
-	</nav>
-	
-	<form action="/home" method="POST">
+	<section layout:fragment="conteudo">
+	<form action="/cadastrodeevento" method="POST">
 	<div class = "form-horizontal">
 
 			<div class="cadastro">
@@ -29,7 +20,7 @@
 					<div class="form-group">
 						<label for="nomeevento" class="col-sm-4 control-label">NOME DO EVENTO</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="nomeevento" />
+							<input type="text" class="form-control" name="Nome" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -41,7 +32,7 @@
 					<div class="form-group">
 					<label for= "local" class="col-sm-4 control-label">LOCAL</label>
 						<div class="col-sm-2">
-							<select class ="form-control" name="local">
+							<select class ="form-control" name="Local">
 							<option th:each="local : ${locais}" th:value="${local}" th:text="${local.cat}"></option>
 							</select>
 						</div>
@@ -49,7 +40,7 @@
 					<div class="form-group">
 					<label for="data" class="col-sm-4 control-label">DATA</label>
 						<div class="col-sm-8">
-							<input type="texto" class="form-control" name="data"/>
+							<input type="text" class="form-control" name="Data"/>
 						</div>
 					</div>
 					<div class = "form-group">
@@ -61,7 +52,5 @@
 			</div>
 		</div>
 		</form>
-		</body>
-	<script type="/js/jquery-3.4.1.min.js"></script>
-<script type="/js/bootstrap.min.js"></script>
+	</section>
 </html>

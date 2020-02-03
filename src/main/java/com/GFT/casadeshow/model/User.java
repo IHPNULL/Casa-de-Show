@@ -6,20 +6,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class User {
 	
-	Date Data = new Date();
+	@DateTimeFormat(pattern = "dd/MM/yyy")
+	@Temporal(TemporalType.DATE)
+	Date date = new Date();
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
 	private String Nome;
+	
+	@NotNull
 	private String Email;
+	
+	@NotNull
 	private String Senha;	
 	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -69,4 +88,5 @@ public class User {
 			return false;
 		return true;
 	}
+
 }

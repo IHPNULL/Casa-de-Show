@@ -6,7 +6,7 @@ body {
 	position: fixed;
 	left: 25%;
 	right: 25%;
-	font-size: 150%;
+	font-size: 100%;
 }
 
 .container-fluid {
@@ -39,6 +39,7 @@ body {
 }
 
 .cadastro {	
+	margin-top:8%;
 	width:40%;
 	border: 2px solid black;
 	border-radius: 5px;

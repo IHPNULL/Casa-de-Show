@@ -1,5 +1,6 @@
 package com.GFT.casadeshow.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,22 +9,50 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
+import javax.persistence.TemporalType;
 
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+
+@SuppressWarnings("deprecation")
 @Entity
 public class Evento {
-	
-	private Date Data = new Date();
-	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message="Insira o nome do Evento")
+	@NotNull
 	private String Nome;
+	
 	private String org;
+	
+	@NotEmpty(message="Insira a banda")
 	private String musicobanda;
+	
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal valor;
 
+	@NotNull(message="Insira a data no formato: dia/mes/ano")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date data = new Date();
+	
 	
 
+	public BigDecimal getValor() {
+		return valor;
+	}
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
 	@Enumerated(EnumType.STRING)
 	private Locais Local;	
 	
@@ -40,10 +69,10 @@ public class Evento {
 		this.Nome = nome;
 	}
 	public Date getData() {
-		return Data;
+		return data;
 	}
 	public void setData(Date data) {
-		Data = data;
+		this.data = data;
 	}
 	public String getMusicobanda() {
 		return musicobanda;

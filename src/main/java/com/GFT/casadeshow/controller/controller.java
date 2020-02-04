@@ -47,7 +47,11 @@ public class controller {
 	
 	@RequestMapping("/cadastrodeevento")
 	public ModelAndView cadastroevento() {
-		ModelAndView mv = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("CadastroEvento");
+		mv.addObject(new Evento());
+		
+		
+		
 		return mv;
 	}
 	
@@ -87,15 +91,22 @@ public class controller {
 
 		usu.save(user);
 		
-		mv.addObject("mensagem", "usuario cadastrado com sucesso");
+		mv.addObject("mensagem", "cadastrado com sucesso");
 		return mv;
 	}
 	
 	@RequestMapping(value = "/cadastrodeevento",method = RequestMethod.POST)
-	public ModelAndView salvarevento(@Validated Evento event) {	
-		eventos.save(event);
-		
+	public ModelAndView salvarevento(@Validated Evento event, Errors errors) {	
 		ModelAndView mv = new ModelAndView("CadastroEvento");
+		
+		if(errors.hasErrors()) {
+			return mv;
+			
+		}
+		mv.addObject(new Evento());
+
+		eventos.save(event);
+
 		mv.addObject("mensagem", "evento marcado com sucesso");
 		return mv;
 	}

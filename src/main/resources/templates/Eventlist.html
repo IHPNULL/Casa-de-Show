@@ -18,10 +18,11 @@
 					<thead>
 						<tr>
 							<th class="text-center col-md-1">ID</th>
-							<th class="text-center col-md-1">Nome</th>
-							<th>Banda</th>
-							<th>Local</th>
+							<th class="text-center col-md-3">Nome</th>
+							<th class="text-center col-md-3">Banda</th>
+							<th class="text-center col-md-2">Local</th>
 							<th>Organizador</th>
+							<th>Valor</th>
 							<th class="text-center col-md-1">Data do Evento</th>
 						</tr>
 					</thead>
@@ -33,11 +34,12 @@
 							<td th:text="${Evento.musicobanda}"></td>
 							<td th:text="${Evento.Local}"></td>
 							<td th:text="${Evento.org}"></td>
-							<td class="text-center" th:text="${Evento.Data }"></td>
+							<td th:text="|R$:${Evento.valor}"></td>
+							<td class="text-center" th:text="${#dates.format(Evento.data, 'dd-MMM-yyyy')}"></td>
 						</tr>
 										
 						<tr>
-							<td colspan="6">Nenhum usuario encontrado</td>
+							<td th:if="${#lists.isEmpty(CadastroEvento)}"colspan="7">Nenhum usuario encontrado</td>
 						</tr>
 						 			
 					</tbody>

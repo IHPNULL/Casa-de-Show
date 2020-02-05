@@ -8,11 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.sun.istack.NotNull;
 
+
+@SuppressWarnings("deprecation")
 @Entity
 public class User {
 	
@@ -24,14 +28,20 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
+	@NotNull(message="Insira o nome")
+	@NotEmpty(message="Insira o nome")
 	private String Nome;
 	
 	@NotNull
+	@NotEmpty(message="Insira o e-mail")
 	private String Email;
 	
 	@NotNull
-	private String Senha;	
+	@NotEmpty(message="Insira a senha")
+	private String Senha;
+	
+	@Transient
+	private String confirmacaoSenha;
 	
 	public Date getDate() {
 		return date;
@@ -62,6 +72,13 @@ public class User {
 	}
 	public void setSenha(String senha) {
 		this.Senha = senha;
+	}
+	public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
+
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
 	}
 	
 	

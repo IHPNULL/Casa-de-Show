@@ -25,10 +25,11 @@ import com.GFT.casadeshow.repository.Users;
 public class controller {
 	
 	@Autowired
-	private Users usu; 
+	private Eventos eventos;
+	
 	
 	@Autowired
-	private Eventos eventos;
+	private Users usu; 
 	
 	
 	@RequestMapping("/home")
@@ -45,6 +46,32 @@ public class controller {
 		return mv;
 	}
 	
+	@RequestMapping("/listadeusuario")
+	public ModelAndView pesquisausu() {
+		List<User> todosusers =  usu.findAll();
+		ModelAndView mv = new ModelAndView("Userlist");
+		mv.addObject("Cadastro", todosusers);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/cadastro",method = RequestMethod.POST)
+	public ModelAndView salvar(@Validated User user, Errors errors) {	
+		ModelAndView mv = new ModelAndView("Cadastro");
+		
+		if(errors.hasErrors()) {
+			return mv;
+			
+		}
+		mv.addObject(new User());
+		
+		usu.save(user);
+		
+		mv.addObject("mensagem", "cadastrado com sucesso");
+		return mv;
+	}
+	
+	//---------------daqui para baixo comeca o controlller do evento------------------------//
+
 	@RequestMapping("/cadastrodeevento")
 	public ModelAndView cadastroevento() {
 		ModelAndView mv = new ModelAndView("CadastroEvento");
@@ -54,44 +81,11 @@ public class controller {
 		
 		return mv;
 	}
-	
-	@RequestMapping("/cadastrodelocal")
-	public ModelAndView cadastrolocal() {
-		ModelAndView mv = new ModelAndView("C");
-		return mv;
-	}
-
-	@RequestMapping("/listadeusuario")
-	public ModelAndView pesquisausu() {
-		List<User> todosusers =  usu.findAll();
-		ModelAndView mv = new ModelAndView("Userlist");
-		mv.addObject("Cadastro", todosusers);
-		return mv;
-	}
-
 	@RequestMapping("/Eventos")
 	public ModelAndView pesquisaevent() {
 		List<Evento> todosevents =  eventos.findAll();
 		ModelAndView mv = new ModelAndView("Eventlist");
 		mv.addObject("CadastroEvento", todosevents);
-		return mv;
-	}
-	
-	
-	
-	@RequestMapping(value = "/home",method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated User user, Errors errors) {	
-		ModelAndView mv = new ModelAndView("home");
-		
-		if(errors.hasErrors()) {
-			return mv;
-			
-		}
-		mv.addObject(new User());
-
-		usu.save(user);
-		
-		mv.addObject("mensagem", "cadastrado com sucesso");
 		return mv;
 	}
 	
@@ -110,13 +104,38 @@ public class controller {
 		mv.addObject("mensagem", "evento marcado com sucesso");
 		return mv;
 	}
-
 	
+	/*---------------daqui para baixo comeca o controlller do Local------------------------
+	
+	@RequestMapping("/cadastrolocal")
+	public ModelAndView pesquisalocal() {
+		List<Locals> todosevents =  loc.findAll();
+		ModelAndView mv = new ModelAndView("Cadastrolocal");
+		mv.addObject("Cadastrolocal", todosevents);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/locais",method = RequestMethod.POST)
+	public ModelAndView salvarlocal(@Validated Locals local, Errors errors) {	
+		ModelAndView mv = new ModelAndView("Cadastrolocal");
+		
+		if(errors.hasErrors()) {
+			return mv;
+			
+		}
+		mv.addObject(new Locals());
+
+		loc.save(local);
+
+		mv.addObject("mensagem", "local salvo com sucesso");
+		return mv;
+	}
+	 */
 	@ModelAttribute("locais")
 	public List<Locais> localmetodo()
 	{
 		return Arrays.asList(Locais.values());
 	}
 	
-
+	
 }

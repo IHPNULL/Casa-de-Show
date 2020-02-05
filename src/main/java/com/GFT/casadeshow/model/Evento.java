@@ -13,7 +13,6 @@ import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.persistence.TemporalType;
 
-
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -32,6 +31,7 @@ public class Evento {
 	@NotNull
 	private String Nome;
 	
+
 	private String org;
 	
 	@NotEmpty(message="Insira a banda")
@@ -45,16 +45,17 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date data = new Date();
 	
+	@Enumerated(EnumType.STRING)
+	private Locais Local;
 	
-
+	private boolean gratuito = false;
+	
 	public BigDecimal getValor() {
 		return valor;
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	@Enumerated(EnumType.STRING)
-	private Locais Local;	
 	
 	public Long getId() {
 		return id;
@@ -80,17 +81,32 @@ public class Evento {
 	public void setMusicobanda(String musicobanda) {
 		this.musicobanda = musicobanda;
 	}
+	
+	public String getOrg() {
+		return org;
+	}
+	public void setOrg(String org) {
+		this.org = org;
+	}
 	public Locais getLocal() {
 		return Local;
 	}
 	public void setLocal(Locais local) {
 		Local = local;
 	}
-	public String getOrg() {
-		return org;
+	public boolean isGratuito() {
+		
+		if(valor.equals(0))
+		{
+			return true;
+		}
+		else
+		{
+			return false;			
+		}
 	}
-	public void setOrg(String org) {
-		this.org = org;
+	public void setGratuito(boolean gratuito) {
+		this.gratuito = gratuito;
 	}
 	@Override
 	public int hashCode() {

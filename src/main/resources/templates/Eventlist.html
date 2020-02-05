@@ -34,7 +34,14 @@
 							<td th:text="${Evento.musicobanda}"></td>
 							<td th:text="${Evento.Local}"></td>
 							<td th:text="${Evento.org}"></td>
-							<td th:text="|R$:${Evento.valor}"></td>
+							<td>
+							 <div th:if="${Evento.gratuito}">
+							 	Gratuito
+							 </div>
+							 <div th:unless="${Evento.gratuito}">
+								 <div th:text="${Evento.valor}"></div>
+							 </div>
+							 </td>
 							<td class="text-center" th:text="${#dates.format(Evento.data, 'dd-MMM-yyyy')}"></td>
 						</tr>
 										

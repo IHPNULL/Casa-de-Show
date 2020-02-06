@@ -47,9 +47,7 @@ public class Evento {
 	
 	@Enumerated(EnumType.STRING)
 	private Locais Local;
-	
-	private boolean gratuito = false;
-	
+		
 	public BigDecimal getValor() {
 		return valor;
 	}
@@ -60,7 +58,7 @@ public class Evento {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Long id) {                                              
 		this.id = id;
 	}
 	public String getNome() {
@@ -93,20 +91,6 @@ public class Evento {
 	}
 	public void setLocal(Locais local) {
 		Local = local;
-	}
-	public boolean isGratuito() {
-		
-		if(valor.equals(0))
-		{
-			return true;
-		}
-		else
-		{
-			return false;			
-		}
-	}
-	public void setGratuito(boolean gratuito) {
-		this.gratuito = gratuito;
 	}
 	@Override
 	public int hashCode() {

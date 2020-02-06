@@ -3,56 +3,44 @@
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorator="LayoutPadrao">
-<head>
-<meta charset="utf-8">
-<title>Eventos</title>
-</head>
-
-<section layout:fragment="conteudo">	
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h1 class="panel-title">Lista de eventos</h1>
+	<head>
+	<meta charset="utf-8">
+	<title>Eventos</title>
+	</head>
+		<section layout:fragment="conteudo">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title">Lista de eventos</h1>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th class="text-center col-md-1">ID</th>
+								<th class="text-center col-md-3">Nome</th>
+								<th class="text-center col-md-3">Banda</th>
+								<th class="text-center col-md-2">Local</th>
+								<th>Organizador</th>
+								<th>Valor</th>
+								<th class="text-center col-md-1">Data do Evento</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each=" Evento : ${CadastroEvento}">
+								<td class="text-center" th:text="${Evento.id}">1</td>
+								<td class="text-center" th:text="${Evento.nome}"></td>
+								<td th:text="${Evento.musicobanda}"></td>
+								<td th:text="${Evento.Local}"></td>
+								<td th:text="${Evento.org}"></td>
+								<td th:text="${Evento.valor}"></td>
+								<td class="text-center" th:text="${#dates.format(Evento.data, 'dd-MMM-yyyy')}"></td>
+								</tr>
+								<tr>
+								<td th:if="${#lists.isEmpty(CadastroEvento)}"colspan="7">Nenhum usuario encontrado</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
 			</div>
-			<div class="panel-body">
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th class="text-center col-md-1">ID</th>
-							<th class="text-center col-md-3">Nome</th>
-							<th class="text-center col-md-3">Banda</th>
-							<th class="text-center col-md-2">Local</th>
-							<th>Organizador</th>
-							<th>Valor</th>
-							<th class="text-center col-md-1">Data do Evento</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr th:each=" Evento : ${CadastroEvento}">					
-							<td class="text-center" th:text="${Evento.id}">1</td>
-							<td class="text-center" th:text="${Evento.nome}"></td>
-							<td th:text="${Evento.musicobanda}"></td>
-							<td th:text="${Evento.Local}"></td>
-							<td th:text="${Evento.org}"></td>
-							<td>
-							 <div th:if="${Evento.gratuito}">
-							 	Gratuito
-							 </div>
-							 <div th:unless="${Evento.gratuito}">
-								 <div th:text="${Evento.valor}"></div>
-							 </div>
-							 </td>
-							<td class="text-center" th:text="${#dates.format(Evento.data, 'dd-MMM-yyyy')}"></td>
-						</tr>
-										
-						<tr>
-							<td th:if="${#lists.isEmpty(CadastroEvento)}"colspan="7">Nenhum usuario encontrado</td>
-						</tr>
-						 			
-					</tbody>
-				</table>
-			</div>	
-		
-		</div>
 		</section>
 </html>
